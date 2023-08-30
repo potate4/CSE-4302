@@ -4,9 +4,9 @@ using namespace std;
 class Time
 {
 private:
-    int hour;
-    int minute;
-    int second;
+    int hour = 0;
+    int minute = 0;
+    int second = 0;
 public:
     int hours()
     {
@@ -22,9 +22,20 @@ public:
     }
     void reset(int h, int m, int s)
     {
-        hour = h;
-        minute = m;
-        second = s;
+        second += s;
+        if(second >= 60)
+        {
+            minute += second/60;
+            second = (second % 60);
+        }
+        minute += m;
+        if(minute >= 60)
+        {
+            hour += minute/60;
+            minute = (minute % 60);
+        }
+        hour += h;
+        hour = hour % 24;
     }
     void advance(int h, int m, int s)
     {
@@ -41,7 +52,7 @@ public:
             minute = (minute % 60);
         }
         hour += h;
-        if(hour >= 24) hour = 24;
+        hour = hour % 24;
     }
     void print()
     {

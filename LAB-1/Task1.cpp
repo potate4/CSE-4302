@@ -20,6 +20,7 @@ public:
       double b = (double) denominator;
       if(b > 0) return a/b;
       else cout << "ERROR" << endl;
+      return 0.0;
   }
   void invert()
   {

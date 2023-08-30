@@ -5,8 +5,8 @@ class Medicine
 private:
     string name;
     string genericName;
-    double discount_percent;
-    double unitPrice;
+    double discount_percent = 5;
+    double unitPrice = 0;
 public:
  void assignName(string NAME, string GENERICNAME)
  {
@@ -37,9 +37,13 @@ int main()
     Medicine med;
     string name, genName;
     cin >> name >> genName;
-    med.assignName(name, genName);
-    med.assignPrice(0.80);
-    med.setDiscountPercent(10);
+    med.assignName(name, genName);  
+    double price;
+    cin >> price;
+    med.assignPrice(price);
+    double dis;
+    cin >> dis;
+    med.setDiscountPercent(dis);
     med.display();
     return 0;
 }
